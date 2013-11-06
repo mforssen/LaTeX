@@ -14,6 +14,9 @@
 \RequirePackage{amssymb}
 \RequirePackage{boxedminipage}
 \RequirePackage{fancyhdr}
+\RequirePackage{framed}
+\RequirePackage[usenames,dvipsnames]{color}
+\RequirePackage{xcolor}
 
 \LoadClass{article}
 
@@ -46,7 +49,36 @@
 
 % COMMANDS
 
+\newcommand{\topic}[1]{\begin{center} \large \bfseries #1 \end{center} \vspace{10pt}}
+
+\newcommand{\subtopic}[1]{{\large\bfseries #1 \newline}}
+
 
 % ENVIRONMENTS
+
+\newenvironment{important}{%
+    \colorlet{shadecolor}{yellow}
+    \begin{shaded}
+        \par\noindent
+    } {%
+    \end{shaded}
+}
+
+\newenvironment{thm}[1]{%
+    \colorlet{shadecolor}{Melon}
+    \begin{shaded} 
+        \noindent {\bfseries #1:}
+    } {%
+    \end{shaded}
+}
+
+\newenvironment{proof}{%
+    \colorlet{shadecolor}{SpringGreen}
+    \begin{shaded}
+        \par\noindent {\bfseries Proof:}
+    } {%
+    \end{shaded}
+}
+
 
 

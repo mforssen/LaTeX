@@ -1,0 +1,48 @@
+\documentclass{notes}
+\setlength\parindent{0pt}
+
+\name{May Lynn}
+\subject{Programming Practicum}
+\date{\today}
+
+\begin{document}
+\topic{\LaTeX Notes Class}
+\subtopic{How to take notes}
+This package should provide many commands and environments that the average student may want when taking notes in class. This includes color coding, highlighting, and emphasizing things in a consistent way.
+\\
+\\
+You can highlight important things like this:
+
+\begin{verbatim}
+\begin{important}
+    Important stuff goes here!
+\end{important}
+\end{verbatim}
+
+which would look like this:
+
+\begin{important}
+    Important stuff goes here!
+\end{important}
+
+Theorems and proofs are given ther own special highlighting, as follows. They can be made with
+\begin{verbatim}
+\begin{thm}{name of theorem}
+...
+\end{thm}
+
+\begin{proof}
+...
+\end{proof}
+\end{verbatim}
+Here is a sample theorem box:
+\begin{thm}{Theorem}
+\LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. \LaTeX is the de facto standard for the communication and publication of scientific documents. \LaTeX is available as free software. 
+\end{thm}
+And here is a sample proof box:
+\begin{proof}
+\LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation. \LaTeX is the de facto standard for the communication and publication of scientific documents. \LaTeX is available as free software. 
+\end{proof}
+
+
+\end{document}
