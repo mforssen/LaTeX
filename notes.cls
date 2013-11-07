@@ -12,25 +12,38 @@
 \RequirePackage{ifpdf}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
-\RequirePackage{boxedminipage}
 \RequirePackage{fancyhdr}
 \RequirePackage{framed}
 \RequirePackage[usenames,dvipsnames]{color}
 \RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+\RequirePackage{paralist}
 
 \LoadClass{article}
+
+% COLORS
+
+\definecolor{thmcolor}{RGB}{219,255,217}
+\definecolor{proofcolor}{RGB}{186,235,183}
+\definecolor{importantcolor}{RGB}{250,250,170}
+\definecolor{keywordcolor}{RGB}{245,127,81}
+\definecolor{headercolor}{RGB}{150,150,150}
 
 % HEADER AND FOOTER
 
 \fancypagestyle{firstpage}{%
-  \fancyhf{}
-  \fancyhead[LE,LO]{\@name}
-  \fancyhead[CE,CO]{\@subject}
-  \fancyhead[RE,RO]{\@date}
-  \fancyfoot[CE,CO]{\thepage}
+  %\fancyhf{}
+  \fancyhead[LE,LO]{\color{headercolor}\@name}
+  \fancyhead[CE,CO]{\color{headercolor}\@subject}
+  \fancyhead[RE,RO]{\color{headercolor}\@date}
+  \fancyfoot[CE,CO]{\color{headercolor}\thepage}
+  \patchcmd{\headrule}{\hrule}{\color{headercolor}\hrule}{}{}
+  \patchcmd{\footrule}{\hrule}{\color{headercolor}\hrule}{}{}
   \renewcommand{\headrulewidth}{0.7pt}
   \renewcommand{\footrulewidth}{0.7pt}
 }
+
+
 
 \pagestyle{firstpage}
 
@@ -53,11 +66,15 @@
 
 \newcommand{\subtopic}[1]{{\large\bfseries #1 \newline}}
 
+\newcommand{\key}[1]{{\bfseries\color{keywordcolor} #1}}
+
+\newcommand{\bul}[1]{\begin{compactitem} \item #1 \end{compactitem}}
+
 
 % ENVIRONMENTS
 
 \newenvironment{important}{%
-    \colorlet{shadecolor}{yellow}
+    \colorlet{shadecolor}{importantcolor}
     \begin{shaded}
         \par\noindent
     } {%
@@ -65,19 +82,25 @@
 }
 
 \newenvironment{thm}[1]{%
-    \colorlet{shadecolor}{Melon}
+    \colorlet{shadecolor}{thmcolor}
     \begin{shaded} 
-        \noindent {\bfseries #1:}
+        \par\noindent {\bfseries #1:}
     } {%
     \end{shaded}
 }
 
 \newenvironment{proof}{%
-    \colorlet{shadecolor}{SpringGreen}
+    \colorlet{shadecolor}{proofcolor}
     \begin{shaded}
         \par\noindent {\bfseries Proof:}
-    } {%
+    }   {%
+    \hfill $\square$
     \end{shaded}
+}
+
+\newenvironment{definition}[1]{%
+    \par\noindent\key{#1:}
+    } {%
 }
 
 

@@ -2,13 +2,10 @@
 
 By May Lynn Forssen
 
-The file
+The file `notes.cls` is a LaTeX class for taking notes. The file 
+`sample_notes.tex` is a sample LaTeX file made using the class.
 
-    notes.cls
-
-is a LaTeX class for taking notes.
-
-## Usage
+### Usage
 
 In the preamble, you can define the following:
 
@@ -18,23 +15,29 @@ In the preamble, you can define the following:
 
 which will make a header on every page.
 
-The "important" environment will highlight important notes in yellow, making 
+The `important` environment will highlight important notes in yellow, making 
 them stand out from the rest, like so:
 
     \begin{important}
         Important stuff...
     \end{important}
 
-The "thm" environment will place a colored box around your theorems, making them
-easy to spot. You can make a theorem as follows:
+The `thm` environment will place a colored box around your theorems, making them
+easy to spot. Make a theorem with `\begin{thm}{name of theorem} ... \end{thm}`.
 
-    \begin{thm}{name of theorem}
-        body of theorem
-    \end{thm}
+The `proof` environment will place a colored box (of a different color from the
+theorems) around your proof. Make a proof with `\begin{proof} ... \end{proof}`.
 
-The "proof" environment will place a colored box (of a different color from the
-theorems) around your proof. You can make a proof as follows:
+The `definition` environment will make the defined word colored and bold. The 
+command `key{word}` does the same. Make a definition with 
+`\begin{definition}{word} ... \end{definition}`
 
-    \begin{proof}
-        body of proof
-    \end{proof}
+The colors associated with any of these environments (as well as the header) can
+be redefined in the TeX file with
+
+    \colorlet{headercolor}{new color}
+    \colorlet{thmcolor}{new color}
+    \colorlet{proofcolor}{new color}
+    \colorlet{keywordcolor}{new color}
+
+in the preamble.
