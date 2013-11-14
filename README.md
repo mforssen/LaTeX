@@ -8,8 +8,8 @@ The file `notes.cls` is a LaTeX class for taking notes. The file
 The file `homework.cls` is a class for doing problem set style homeworks.
 The file `sample_notes.tex` is an example of the format of such a homework.
 
+---
 ## Notes
-----------
 ### Usage
 
 In the preamble, you can define the following:
@@ -31,7 +31,8 @@ The `thm` environment will place a colored box around your theorems, making them
 easy to spot. Make a theorem with `\begin{thm}{name of theorem} ... \end{thm}`.
 
 The `proof` environment will place a colored box (of a different color from the
-theorems) around your proof. Make a proof with `\begin{proof} ... \end{proof}`.
+theorems) around your proof, and a square symbol at the end of your proof. 
+Make a proof with `\begin{proof} ... \end{proof}`.
 
 The `definition` environment will make the defined word colored and bold. The 
 command `key{word}` does the same. Make a definition with 
@@ -46,3 +47,31 @@ be redefined in the TeX file with
     \colorlet{keywordcolor}{new color}
 
 in the preamble.
+
+---
+## Homework
+### Usage
+
+In the preamble, you can define the following:
+
+    \name{Your Name}
+    \course{The course name}
+    \assignment{The homework name or number}
+    \date{the date}
+
+which will make a header on every page.
+
+At the start of the document, type
+ 
+    \maketitle
+
+to get the heading on the first page.
+
+The `problem` environment draw a box around a problem statement. Make a problem
+statement with `\begin{problem}[problem number/name] ... \end{problem}
+
+The `solution` environment is where you place your solutions to problems.
+Make a solution with `\begin{solution} ... \end{solution}`.
+
+The `proof` environment will place a square symbol at the end of your proof. 
+Make a proof with `\begin{proof} ... \end{proof}
