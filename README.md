@@ -74,4 +74,4 @@ The `solution` environment is where you place your solutions to problems.
 Make a solution with `\begin{solution} ... \end{solution}`.
 
 The `proof` environment will place a square symbol at the end of your proof. 
-Make a proof with `\begin{proof} ... \end{proof}
+Make a proof with `\begin{proof} ... \end{proof}`
