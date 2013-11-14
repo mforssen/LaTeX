@@ -1,0 +1,57 @@
+\documentclass[11pt, letterpaper]{homework}
+
+\setlength\parindent{0pt}
+
+\name{May Lynn Forssen}
+\assignment{Homework 1}
+\date{\today}
+\course{Computer Science}
+
+\begin{document}
+\maketitle
+
+\begin{problem}[Problem 1:]
+\LaTeX{} is a document preparation system for the \TeX{}
+  typesetting program. It offers programmable desktop
+  publishing features and extensive facilities for
+  automating most aspects of typesetting and desktop
+  publishing, including numbering and cross-referencing,
+  tables and figures, page layout, bibliographies, and
+  much more. \LaTeX{} was originally written in 1984 by
+  Leslie Lamport and has become the dominant method for
+  using \TeX; few people write in plain \TeX{} anymore.
+  The current version is \LaTeXe.
+\end{problem}
+
+\begin{solution}[]
+ Before text editors existed, computer text was punched into punched cards with keypunch machines. The text was carried as a physical box of these thin cardboard cards, and read into a card-reader. Magnetic tape or disk ``card-image'' files created from such card decks often had no line-separation characters at all, assuming fixed-length 80-character records. An alternative to cards was punched paper tape, which could be punched by some teleprinters (such as the Teletype), which did use special characters to indicate ends of records.
+
+\begin{proof}
+{\bf Proof:} ({\it Proof by Contradiction}) Assume to the contrary that there is a solution $(x, y)$ where $x$ and $y$ are positive integers. If this is the case, we can factor the left side: $x2 - y2 = (x-y)(x+y) = 1$. Since $x$ and $y$ are integers, it follows that either $x-y = 1$ and $x+y = 1$ or $x-y = -1$ and $x+y = -1$. In the first case we can add the two equations to get $x = 1$ and $y = 0$, contradicting our assumption that x and y are positive. The second case is similar, getting $x = -1$ and $y = 0$, again contradicting our assumption. 
+\end{proof}
+
+\end{solution}
+
+\begin{problem}[Problem 2:]
+The main point of writing a text is to convey ideas, information, or knowledge to the reader. The reader will understand the text better if these ideas are well-structured, and will see and feel this structure much better if the typographical form reflects the logical and semantic structure of the content.
+\end{problem}
+
+\begin{solution}
+\begin{proof}
+\LaTeX{} is different from other typesetting systems in that you just have to tell it the logical and semantical structure of a text. It then derives the typographical form of the text according to the “rules” given in the document class file and in various style files. \LaTeX{} allows users to structure their documents with a variety of hierarchical constructs, including chapters, sections, subsections and paragraphs.
+\end{proof}
+\end{solution}
+
+\begin{problem}[Problem 3:]
+When processing an input file, LaTeX needs to know the type of document the author wants to create. This is specified with the \verb|\documentclass| command. It is recommended to put this declaration at the very beginning.
+
+\begin{verbatim}
+    \documentclass[options]{class}
+\end{verbatim}
+\end{problem}
+
+\begin{solution}
+Here class specifies the type of document to be created. The \LaTeX{} distribution provides additional classes for other documents, including letters and slides. It is also possible to create your own, as is often done by journal publishers, who simply provide you with their own class file, which tells \LaTeX{} how to format your content. But we'll be happy with the standard article class for now. The options parameter customizes the behavior of the document class. The options have to be separated by commas.
+\end{solution}
+
+\end{document}

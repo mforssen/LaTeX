@@ -5,6 +5,11 @@ By May Lynn Forssen
 The file `notes.cls` is a LaTeX class for taking notes. The file 
 `sample_notes.tex` is a sample LaTeX file made using the class.
 
+The file `homework.cls` is a class for doing problem set style homeworks.
+The file `sample_notes.tex` is an example of the format of such a homework.
+
+## Notes
+----------
 ### Usage
 
 In the preamble, you can define the following:

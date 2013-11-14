@@ -7,6 +7,15 @@
 \ProvidesClass{notes}[11/5/2013]
 \NeedsTeXFormat{LaTeX2e}
 
+% OPTIONS
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions \relax
+
+% GEOMETRY
+
+\RequirePackage[paper=letterpaper]{geometry}
+
 % LOAD PACKAGES
 
 \RequirePackage{ifpdf}
@@ -32,7 +41,6 @@
 % HEADER AND FOOTER
 
 \fancypagestyle{firstpage}{%
-  %\fancyhf{}
   \fancyhead[LE,LO]{\color{headercolor}\@name}
   \fancyhead[CE,CO]{\color{headercolor}\@subject}
   \fancyhead[RE,RO]{\color{headercolor}\@date}
@@ -102,6 +110,3 @@
     \par\noindent\key{#1:}
     } {%
 }
-
-
-
