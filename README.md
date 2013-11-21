@@ -52,11 +52,11 @@ in the preamble.
 ## Homework
 ### Usage
 
-The homework class has several options. You can use `notitle' if you do
+The homework class has several options. You can use `notitle` if you do
 not want the first page to have a large title (different from the other
-pages). Use `unboxed' if you do not want the problem statements to be
-boxed. Use `slabel' if you want to label each solution as "Solution:" 
-(good to use with `unboxed' so you can tell where the solution starts).
+pages). Use `unboxed` if you do not want the problem statements to be
+boxed. Use `slabel` if you want to label each solution as "Solution:" 
+(good to use with `unboxed` so you can tell where the solution starts).
 
 In the preamble, you can define the following:
 
