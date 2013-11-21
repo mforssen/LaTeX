@@ -52,6 +52,12 @@ in the preamble.
 ## Homework
 ### Usage
 
+The homework class has several options. You can use `notitle' if you do
+not want the first page to have a large title (different from the other
+pages). Use `unboxed' if you do not want the problem statements to be
+boxed. Use `slabel' if you want to label each solution as "Solution:" 
+(good to use with `unboxed' so you can tell where the solution starts).
+
 In the preamble, you can define the following:
 
     \name{Your Name}
@@ -61,7 +67,7 @@ In the preamble, you can define the following:
 
 which will make a header on every page.
 
-At the start of the document, type
+At the start of the document, if you want a title on the first page, type
  
     \maketitle
 

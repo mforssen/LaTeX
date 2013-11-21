@@ -7,10 +7,46 @@
 \ProvidesClass{homework}[11/5/2013]
 \NeedsTeXFormat{LaTeX2e}
 
-% OPTIONS
+\RequirePackage{ifpdf}
+
+% DECLARE OPTIONS
+
+\newif\ifhomework@title % different title on front page
+
+\DeclareOption{notitle}{%
+    \homework@titlefalse%
+}
+
+\DeclareOption{title}{%
+    \homework@titletrue%
+}
+
+\newif\ifhomework@boxed % if the problem statements are boxed or not
+
+\DeclareOption{boxed}{%
+    \homework@boxedtrue%
+}
+
+\DeclareOption{unboxed}{%
+    \homework@boxedfalse%
+}
+
+\newif\ifhomework@slabel % if the solutions are labeled
+
+\DeclareOption{slabel}{%
+    \homework@slabeltrue%
+}
+
+\DeclareOption{noslabel}{%
+    \homework@slabelfalse%
+}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-\ProcessOptions \relax
+
+% EXECUTE OPTIONS
+
+\ExecuteOptions{title,boxed,noslabel}
+\ProcessOptions
 
 % GEOMETRY
 
@@ -18,13 +54,10 @@
 
 % LOAD PACKAGES
 
-\RequirePackage{ifpdf}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{fancyhdr}
 \RequirePackage{framed}
-\RequirePackage[usenames,dvipsnames]{color}
-\RequirePackage{xcolor}
 \RequirePackage{etoolbox}
 \RequirePackage{paralist}
 
@@ -54,7 +87,10 @@
 
 
 \pagestyle{followingpage}
-\AtBeginDocument{\thispagestyle{firstpage}}
+
+\ifhomework@title
+    \AtBeginDocument{\thispagestyle{firstpage}}
+\fi
 
 \renewcommand{\footnoterule}{\relax}
 
@@ -91,24 +127,29 @@
 % ENVIRONMENTS
 
 \newenvironment{problem}[1][]{% 
-    \begin{framed}
+    \ifhomework@boxed \begin{framed}\fi%
         \par\noindent {\bfseries #1}
-    } {%
-    \end{framed}
+        } {%
+    \ifhomework@boxed\end{framed}\fi%
 }
 
-\newenvironment{solution}[1][]{% 
-    \begin{trivlist}
-    \item[]
-    } {%
-    \end{trivlist}
+\newenvironment{solution}{% 
+    \ifhomework@slabel \begin{trivlist}
+        \item[] 
+        {\bfseries Solution:}
+        \fi
+        \begin{trivlist}
+            \item[]
+            } {%
+        \end{trivlist}
+    \ifhomework@slabel \end{trivlist} \fi
 }
 
 \newenvironment{proof}{% 
     \begin{trivlist}
-    \item[]
-    } {%
-    \mbox{}\hfill $\square$
+        \item[]
+        } {%
+        \mbox{}\penalty10000 \hfill $\square$
     \end{trivlist}
 }
 
