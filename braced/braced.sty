@@ -1,0 +1,13 @@
+\ProvidesPackage{braced}[11/21/2013]
+\NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage{amsmath}
+\RequirePackage{marginnote}
+
+\newcommand\braced[3]{%
+    \par\smallskip\noindent\makebox[\textwidth][c]{$ \left #1
+    \begin{minipage}{\textwidth}
+        #2
+    \end{minipage}
+    \right #3 \nulldelimiterspace=0pt$}\par\smallskip
+}
