@@ -81,3 +81,15 @@ Make a solution with `\begin{solution} ... \end{solution}`.
 
 The `proof` environment will place a square symbol at the end of your proof. 
 Make a proof with `\begin{proof} ... \end{proof}`
+
+---
+## Braced
+### Usage
+
+The `braced` package will place large braces/parentheses/brackets around 
+chunks of text for you. To use, write
+
+    \braced{left side}{ text }{right side}
+    
+where `left side` and `right side` would be something like `(` and `)` or `\{` and `.`,
+respectively.
