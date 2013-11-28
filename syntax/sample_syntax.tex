@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{syntax}
+
+\begin{document}
+\begin{center} \Large The {\tt syntax} Package Example\end{center}
+\noindent Here is some sample code with basic highlighting:\\
+\\
+
+\newcommand{\tab}{\hspace*{0.5in}}
+
+\def\MyText{ \tt
+\noindent \#include <stdio.h>\\
+\#include <pthread.h>\\
+\#include <time.h>\\
+\\
+\#define SIZE 10\\
+\\
+struct message\\
+\{\\
+\tab	int value;			\\
+\tab    int consumer\_sleep; 	\\
+\tab	int line;			\\
+\tab	int print\_code;		\\
+\tab	int quit;			\\
+\};
+}
+
+\FormatKeyWords{\MyText}
+
+\end{document}

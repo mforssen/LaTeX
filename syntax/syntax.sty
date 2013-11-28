@@ -1,0 +1,29 @@
+\ProvidesPackage{syntax}[11/21/2013]
+\NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage{xstring}
+\RequirePackage[usenames,dvipsnames]{color}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}   
+
+% format style for key words
+\newcommand{\format}[1]{{\color{red} #1}}
+
+\def\KeyWords{void , if , else , define ,  int , char , delete , include , struct , list ,
+and , asm , auto , break, case , class , compl , const , const\_cast, continue , default , do , double , 
+dynamic\_cast , enum , explicit , export , extern , false , true , float , for , friend , goto , inline , long , mutable , 
+namespace , new , not , nullptr , operator , or , private, protected, public, register, return ,  short , signed, sizeof, static, 
+switch, template, this, throw, try, typedef, typeid, typename, union, unsigned, }
+
+
+\newcommand{\FormatKeyWords}[1]{
+    \expandarg
+    \foreach \keyword in \KeyWords
+    {
+      \begingroup\edef\x{\endgroup
+        \unexpanded{\StrSubstitute[0]{#1}{\keyword}}
+        {\noexpand\format{\keyword}}}\x[\temp]
+      \global\let#1\temp
+    }
+    #1
+}
