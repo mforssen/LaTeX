@@ -93,3 +93,14 @@ chunks of text for you. To use, write
     
 where `left side` and `right side` would be something like `(` and `)` or `\{` and `.`,
 respectively.
+
+---
+## Syntax
+### Usage
+
+The `syntax` package will apply syntax hightlighting (currently for the C++ keywords) to a section of text.
+To use, write
+
+    \syntax| ... |
+    
+This does not work for text inside a verbatim environment.
