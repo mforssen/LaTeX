@@ -1,29 +1,39 @@
 \ProvidesPackage{syntax}[11/21/2013]
 \NeedsTeXFormat{LaTeX2e}
 
-\RequirePackage{xstring}
 \RequirePackage[usenames,dvipsnames]{color}
 \RequirePackage{xcolor}
-\RequirePackage{tikz}   
+\RequirePackage{l3regex,xparse}
 
-% format style for key words
-\newcommand{\format}[1]{{\color{red} #1}}
+\ExplSyntaxOn
+\tl_new:N \l_removedots_tl
+\tl_new:N \l_removedots_str
+\DeclareDocumentCommand{\syntax}{+v}
+  {
+    \str_set:Nn \l_syntax_str {#1}
 
-\def\KeyWords{void , if , else , define ,  int , char , delete , include , struct , list ,
-and , asm , auto , break, case , class , compl , const , const\_cast, continue , default , do , double , 
-dynamic\_cast , enum , explicit , export , extern , false , true , float , for , friend , goto , inline , long , mutable , 
-namespace , new , not , nullptr , operator , or , private, protected, public, register, return ,  short , signed, sizeof, static, 
-switch, template, this, throw, try, typedef, typeid, typename, union, unsigned, }
+    % coloring for key words
+    \regex_replace_all:nnN { include(\ ) } {\cB\{ \c{color}\cB\{ Magenta \cE\} include \cE\} \1 } \l_syntax_str
+    \regex_replace_all:nnN { define(\ ) } {\cB\{ \c{color}\cB\{ Magenta \cE\} define \cE\} \1 } \l_syntax_str
+    \regex_replace_all:nnN { (\W)int(\ ) } {\cB\{ \1 \c{slshape} \c{color}\cB\{ Magenta \cE\} int \cE\} \2 } \l_syntax_str
+    \regex_replace_all:nnN { (\W) return(\ ) } {\1 \cB\{ \c{color}\cB\{ Magenta \cE\} return \cE\} \2 } \l_syntax_str
+    \regex_replace_all:nnN { (\ )namespace(\ ) } {\1 \cB\{ \c{color}\cB\{ Magenta \cE\} namespace \cE\} \2 } \l_syntax_str
+    \regex_replace_all:nnN { (\W)using(\ ) } {\1 \cB\{ \c{color}\cB\{ Magenta \cE\} using \cE\} \2 } \l_syntax_str
 
+    % coloring for angle brackets and strings
+    \regex_replace_all:nnN { <(.*?)> } {\cB\{ \c{color}\cB\{ Dandelion \cE\} <\1> \cE\}} \l_syntax_str
+    \regex_replace_all:nnN { "(.*?)" } {\cB\{ \c{color}\cB\{ Dandelion \cE\} "\1" \cE\}} \l_syntax_str
 
-\newcommand{\FormatKeyWords}[1]{
-    \expandarg
-    \foreach \keyword in \KeyWords
-    {
-      \begingroup\edef\x{\endgroup
-        \unexpanded{\StrSubstitute[0]{#1}{\keyword}}
-        {\noexpand\format{\keyword}}}\x[\temp]
-      \global\let#1\temp
-    }
-    #1
-}
+    % coloring for functions
+    \regex_replace_all:nnN { (\w*?)(\( .*? \)) } {\cB\{ \c{color}\cB\{ Cyan \cE\} \1 \cE\}\2} \l_syntax_str
+
+    \tl_set_rescan:Nno \l_syntax_tl
+      {
+        \int_set:Nn \tex_newlinechar:D { `\^^M }
+        \int_set:Nn \tex_endlinechar:D { `\^^M }
+      }
+      \l_syntax_str
+
+    \tl_use:N \l_syntax_tl
+  }
+\ExplSyntaxOff
