@@ -98,9 +98,10 @@ respectively.
 ## Syntax
 ### Usage
 
-The `syntax` package will apply syntax hightlighting (currently for the C++ keywords) to a section of text.
+The `syntax` package will apply syntax hightlighting (currently for the C++ or Python keywords) to a section of text.
 To use, write
 
-    \syntax| ... |
+    \syntax[language]{ ... }
     
-This does not work for text inside a verbatim environment.
+where `language` can either be `c++` or `python`. 
+For examples of usage, see the `sample_syntax.tex` file.
